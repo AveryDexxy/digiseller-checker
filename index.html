@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Code</title>
+</head>
+<body>
+    <h1>Проверка кода Digiseller</h1>
+    <input type="text" id="code" placeholder="Введите код">
+    <button onclick="checkCode()">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        async function checkCode() {
+            const code = document.getElementById('code').value;
+            const response = await fetch(`/.netlify/functions/check_code?code=${code}`);
+            const result = await response.text();
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
